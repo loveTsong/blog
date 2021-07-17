@@ -4,9 +4,12 @@
 cmake >= 3.13
 gcc >= 7.5.0
 
+## 版本
+grpc V1.38.1
+
 ## 下载源码
 ``` bash
-git clone -b XXX https://github.com/grpc/grpc.git --depth 1
+git clone -b V1.38.1 https://github.com/grpc/grpc.git --depth 1
 cd grpc
 git submodule update --init
 ```
@@ -28,4 +31,15 @@ gRPC_USE_PROTO_LITE=ON 表示使用lite版本protobuf
    ```
    - 手动到third_party/zlib目录拉取代码
       `git checkout -f`
+
+2. 编译demo helloworld时提示absl文件找不到
+   - 原因时absl头文件没有安装上，进入到third_party/abseil-cpp
+     ``` bash
+     mkdir cmake/build -p
+     cd cmake/build
+     cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON ../..
+     cmake --build . -- -j
+     sudo make install
+     sudo ldconfig
+     ```
 
