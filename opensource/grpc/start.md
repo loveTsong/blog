@@ -17,8 +17,9 @@ git submodule update --init
 cd grpc
 mkdir -p cmake/build
 cd cmake/build
-cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DgrpcInstall
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DgRPC_INSTALL=ON ../..
 ```
+gRPC_USE_PROTO_LITE=ON 表示使用lite版本protobuf
 
 ## FAQ
 1. ZLIB相关错误
